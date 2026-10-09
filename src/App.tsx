@@ -11,12 +11,13 @@ import { AuditDashboard } from './components/AuditDashboard';
 import { PerformanceTracker } from './components/PerformanceTracker';
 import { AdminPanel } from './components/AdminPanel';
 import { ContractViewer } from './components/ContractViewer';
+import { RawTransactionInspector } from './components/RawTransactionInspector';
 import { KeypairManager } from './components/KeypairManager';
 import { PhantomMobileModal } from './components/PhantomMobileModal';
 import { useWallet } from './contexts/WalletContext';
 
 function StakingApp() {
-  const [currentTab, setCurrentTab] = useState<'VAULTS' | 'REWARD_POOL' | 'AUDIT' | 'PERFORMANCE' | 'ADMIN' | 'CONTRACT' | 'PHANTOM'>('VAULTS');
+  const [currentTab, setCurrentTab] = useState<'VAULTS' | 'REWARD_POOL' | 'AUDIT' | 'PERFORMANCE' | 'ADMIN' | 'CONTRACT' | 'PHANTOM' | 'RAW_TX'>('VAULTS');
   const { isPhantomModalOpen, closePhantomModal } = useWallet();
 
   const {
@@ -134,6 +135,13 @@ function StakingApp() {
       {currentTab === 'CONTRACT' && (
         <div className="space-y-6">
           <ContractViewer />
+        </div>
+      )}
+
+      {/* TAB 8: RAW TRANSACTION & GITHUB SYNC */}
+      {currentTab === 'RAW_TX' && (
+        <div className="space-y-6">
+          <RawTransactionInspector />
         </div>
       )}
 

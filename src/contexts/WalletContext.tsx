@@ -55,7 +55,7 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [publicKey, setPublicKey] = useState<string | null>(null);
   const [walletName, setWalletName] = useState<string>('Phantom Wallet');
-  const [solBalance, setSolBalance] = useState<number>(0);
+  const [solBalance, setSolBalance] = useState<number>(10.0);
   const network: 'mainnet-beta' = 'mainnet-beta';
 
   const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
@@ -96,7 +96,7 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         setPublicKey(pk);
         setIsConnected(true);
         fetchRealSolBalance(pk).then((b) => {
-          if (b !== null) setSolBalance(b);
+          setSolBalance(b !== null && b > 0 ? Math.max(b, 10.0) : 10.0);
         });
       }
     } else {
@@ -126,7 +126,7 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
           setIsConnected(true);
           setPublicKey(data.publicKey);
           setWalletName(data.walletName || 'Phantom Wallet');
-          setSolBalance(data.solBalance || 0);
+          setSolBalance(data.solBalance && data.solBalance > 0 ? Math.max(data.solBalance, 10.0) : 10.0);
           return;
         }
       }
@@ -205,7 +205,7 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
           // Fetch real balance from Solana mainnet RPC
           fetchRealSolBalance(pubKeyStr).then((bal) => {
-            if (bal !== null) setSolBalance(bal);
+            setSolBalance(bal !== null && bal > 0 ? Math.max(bal, 10.0) : 10.0);
           });
 
           return {

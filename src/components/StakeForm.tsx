@@ -32,7 +32,7 @@ export const StakeForm: React.FC<StakeFormProps> = ({ pools, onStake }) => {
     openPhantomModal,
   } = useWallet();
 
-  const [amount, setAmount] = useState<string>('5.0');
+  const [amount, setAmount] = useState<string>('10.0');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [successTx, setSuccessTx] = useState<{
@@ -166,7 +166,7 @@ export const StakeForm: React.FC<StakeFormProps> = ({ pools, onStake }) => {
             <input
               type="number"
               step="0.01"
-              min="0.1"
+              min="1.0"
               placeholder="0.00"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}

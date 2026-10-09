@@ -18,7 +18,7 @@ export const INITIAL_POOLS: StakingPool[] = [
     baseApy: 10000000000,
     roiMultiplier: 1.0,
     lockPeriodSeconds: 180, // Locked in real milliseconds (180,000 ms)
-    minStake: 0.1,
+    minStake: 1.0,
     maxStake: 10000,
     totalStaked: 0,
     stakersCount: 0,

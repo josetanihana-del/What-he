@@ -13,12 +13,13 @@ import {
   LogOut,
   QrCode,
   Smartphone,
+  Terminal,
 } from 'lucide-react';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
-  currentTab: 'VAULTS' | 'REWARD_POOL' | 'AUDIT' | 'PERFORMANCE' | 'ADMIN' | 'CONTRACT' | 'PHANTOM';
-  onTabChange: (tab: 'VAULTS' | 'REWARD_POOL' | 'AUDIT' | 'PERFORMANCE' | 'ADMIN' | 'CONTRACT' | 'PHANTOM') => void;
+  currentTab: 'VAULTS' | 'REWARD_POOL' | 'AUDIT' | 'PERFORMANCE' | 'ADMIN' | 'CONTRACT' | 'PHANTOM' | 'RAW_TX';
+  onTabChange: (tab: 'VAULTS' | 'REWARD_POOL' | 'AUDIT' | 'PERFORMANCE' | 'ADMIN' | 'CONTRACT' | 'PHANTOM' | 'RAW_TX') => void;
 }
 
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
@@ -181,6 +182,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
               { id: 'PERFORMANCE', label: 'Real Yield Metrics', icon: TrendingUp },
               { id: 'ADMIN', label: 'ROI Admin & Config', icon: Settings },
               { id: 'CONTRACT', label: 'Anchor Rust Contract', icon: Code2 },
+              { id: 'RAW_TX', label: 'Raw Tx & GitHub', icon: Terminal },
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = currentTab === tab.id;
