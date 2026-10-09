@@ -146,7 +146,7 @@ export const StakingStats: React.FC<StakingStatsProps> = ({ pools, rewardPool })
             </div>
           </div>
           <span className="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-            98.6 / 100
+            100 / 100
           </span>
         </div>
         <div className="mt-2">
